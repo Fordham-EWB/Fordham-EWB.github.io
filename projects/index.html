@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Titillium+Web" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="./css/style.css" />
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <nav>
+    <a href="../index.html" id="logo"><img src= "./images/logo.png"></a>
+    <a href="../team/index.html">The Team</a>
+    <a href="#">Projects</a>
+    <a href="https://support.ewb-usa.org/events/fordham-university-chapter/e84194" target = "_blank" class="donate"><strong>Donate</strong></a>
+  </nav>
+
+  <h1 class = "center">Map of our projects</h1>
+  <div id="map" class = "center"></div>
+  <script>
+    function initMap(){
+      //initialize map at central point
+      var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 3, center: {lat: 26.046580, lng: -35.314104}});
+      var marker = []; //array of markers for each restaurant
+      function initMarker(pos, lab, u, counter){
+        marker[counter] = new google.maps.Marker({
+          position: pos,
+          label: lab,
+          map: map, //goes to the outer scope to retrieve map
+          url: "http://localhost:8000/projects/index.html#" + u
+        });
+        google.maps.event.addListener(marker[counter], 'click', function() {
+          window.location.href = marker[counter].url; // set link to go to div for projefct
+        });
+      }
+      //initializing list of projects
+      initMarker({lat: 40.855419, lng: -73.8880142}, "A", "citysquash", 1);
+      initMarker({lat: 1.499722, lng: 33.5962}, "B", "pond1", 2);
+      initMarker({lat: 1.089993, lng: 32.177866}, "C", "pond2", 3);
+    }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7o-94o9S4tfP4vJVtltJQbnrC_F8swp0&callback=initMap">
+</script>
+<br>
+
+<div id= "citysquash">
+  <h1 class = "center">A. City Squash</h1>
+  <div class = wrapper>
+    <div class = "col1">
+      <div class = "photo">
+        <img src = "./images/citysquash.jpg">
+      </div >
+    </div>
+    <div class = "col2">
+      <div class = "photo">
+        <img src = "./images/squash.jpg">
+      </div >
+    </div>
+    <div class="col3">
+      <h4>CitySquash is a not-for-profit after-school enrichment program based in the Bronx at Fordham University and in Brooklyn at Poly Prep. City Squash is committed year round to engaging students in at-risk areas of New York City in STEM through a "Science and Sports" approach. Local middle schoolers in the Bronx will come to campus to play squash for sports engagement and members of the chapter will hold fun science experiments ranging from building foil boats to teach density to building bridges to get students excited about engineering.
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div id= "pond1">
+  <h1 class = "center">B. Pond 1</h1>
+  <div class = wrapper>
+    <div class = "col3">
+      <div class = "photo">
+        <img src = "./images/pond1.jpg">
+      </div >
+      <h4> In the winter of 2014, EWB Fordham conducted its first assessment trip to the Omorio Village. Land surveys and assessments of water supply were conducted to determine a suitable site for the first fish pond. After designing and planning out the pond, the team went back to implement the pond in March 2016. The pond, securtiy hut, and surrounding fence was fully completed in October 2017. The pond was filled with Tilapia in April 2018, and its first harvest in January 2019 had a yield of about 6800 fish and a total harvest weight of 1954 kg. The fish were sold in multiple markets around the region, and harvest sales generated ~$4500 USD, which was distributed in varying percentages to the administration, maintenance funds, pond security, and the pond's member families. The largest percentage (47.7%) went to the families.
+        <br><br>Beyond the technical accomplishments of the trip, the team successfully established a relationship with the families of the Omorio Village, the primary beneficiaries of the fish farm. The community reaffirmed its support and dedication to the success of this project, grateful that the income generated from the ponds will assist it in supporting its most disadvantaged members.
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div id= "pond2">
+  <h1>C. Pond 2</h1>
+  <div class = wrapper>
+    <div class = "col3">
+      <div class = "photo">
+        <img src = "./images/pond2.png">
+      </div>
+      <h4>THe team travelled to Uganda in January 2017 to asess Pond 2. A location was found in Kaloaki and the chapeter began designing and planning the pond. In August 2018 we went to lead the implementation of Pond 2. It is now completed and will soon start being filled with fingerlings once it's filled by the source spring. </h4>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
